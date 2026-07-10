@@ -229,4 +229,3 @@ Software Engineering Student
 Faculty of Computers and Artificial Intelligence
 
 Interested in Artificial Intelligence, Machine Learning, Intelligent Systems, and Software Engineering.
-```
