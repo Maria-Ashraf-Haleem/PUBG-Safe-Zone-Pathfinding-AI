@@ -1,121 +1,143 @@
+````markdown
 # PUBG Safe Zone Pathfinding using Informed Search Algorithms
 
-## Overview
+<p align="center">
+  <img src="images/banner.png" alt="PUBG Safe Zone Pathfinding Banner" width="100%">
+</p>
 
-This project presents an AI-based pathfinding solution inspired by the PUBG battle royale environment. The objective is to navigate an autonomous agent from its starting position to the designated safe zone while minimizing movement cost and avoiding dangerous or impassable terrain.
-
-The environment is modeled as a weighted two-dimensional grid in which every terrain type has a different traversal cost. The project demonstrates how informed search algorithms can efficiently solve shortest-path problems in weighted environments.
+<p align="center">
+An Artificial Intelligence project that applies informed search algorithms to compute the optimal path toward the PUBG safe zone while minimizing traversal cost across a weighted environment.
+</p>
 
 ---
 
-## Project Preview
+## Overview
 
-<p align="center">
-<img src="images/banner.png" width="850">
-</p>
+This project presents an intelligent pathfinding system inspired by the PUBG battle royale environment. The objective is to navigate an autonomous agent from a predefined starting position to the designated safe zone while minimizing movement cost and avoiding hazardous terrain.
+
+The environment is modeled as a weighted two-dimensional grid where each terrain type has a different traversal cost. The project demonstrates how Artificial Intelligence search techniques can efficiently solve shortest-path problems in complex environments through informed search strategies.
 
 ---
 
 ## Problem Statement
 
-In PUBG, players must quickly reach the safe zone before the playable area shrinks. The shortest geometric path is not always the safest or the least expensive because different terrain types affect movement cost.
+Reaching the safe zone in PUBG is not simply a matter of moving in a straight line. Different terrains affect movement cost, while obstacles and dangerous regions must be considered during navigation.
 
-This project models that scenario as a weighted pathfinding problem where an intelligent agent searches for the optimal route while avoiding obstacles and minimizing total traversal cost.
+This project formulates the problem as a weighted pathfinding task and applies informed search algorithms to determine an efficient route from the player's starting position to the safe zone.
 
 ---
 
 ## Objectives
 
 - Simulate a PUBG-inspired navigation environment.
-- Represent the environment as a weighted grid.
-- Compare different informed search algorithms.
-- Design admissible heuristic functions.
-- Evaluate search efficiency and solution quality.
+- Represent the map as a weighted grid.
+- Apply informed search algorithms for intelligent navigation.
+- Compare different heuristic-based search strategies.
+- Evaluate path quality and search efficiency.
+- Visualize the generated optimal route.
 
 ---
 
-## Environment
+## Environment Representation
 
-The environment consists of multiple terrain types.
+The environment consists of several terrain types, each associated with a traversal cost.
 
 | Terrain | Description | Cost |
 |----------|-------------|-----:|
-| Start | Initial Position | 0 |
+| Start | Player Initial Position | 0 |
 | Goal | Safe Zone | 1 |
 | Road | Fast Movement | 1 |
 | Open Field | Normal Terrain | 2 |
 | Mountain | Difficult Terrain | 5 |
-| Red Zone | Dangerous Area | 8 |
-| Obstacle | Non Traversable | — |
+| Red Zone | High-Risk Area | 8 |
+| Obstacle | Non-Traversable Cell | — |
 
 ---
 
-## Algorithms Implemented
+## Search Algorithms
 
 ### Greedy Best-First Search
 
-Greedy Best-First Search selects the node that appears closest to the goal according to the heuristic function. Although it often finds a solution quickly, it does not guarantee the optimal path.
+Greedy Best-First Search expands the node that appears closest to the goal according to the selected heuristic function. It usually finds a solution quickly but does not guarantee the optimal path.
 
 ### A* Search
 
-A* combines the accumulated path cost with the heuristic estimate to produce an optimal solution whenever the heuristic is admissible.
+A* Search combines the accumulated path cost with the heuristic estimate to produce an optimal solution whenever an admissible heuristic is used. It balances exploration cost and estimated remaining distance to the goal.
 
 ---
 
 ## Heuristic Functions
 
-Two admissible heuristic functions were implemented.
+The project implements two heuristic functions commonly used in informed search.
 
 - Manhattan Distance
 - Euclidean Distance
 
-Both heuristics estimate the remaining distance to the goal while preserving admissibility for the search problem.
+Both heuristics estimate the remaining distance from the current node to the goal and are evaluated throughout the project.
 
 ---
 
 ## Project Workflow
 
-1. Load the weighted PUBG grid.
-2. Locate the start and goal positions.
+1. Load the weighted PUBG environment.
+2. Identify the start and goal positions.
 3. Generate valid neighboring states.
-4. Evaluate movement cost.
-5. Apply the selected informed search algorithm.
+4. Compute movement costs.
+5. Execute the selected informed search algorithm.
 6. Construct the final path.
-7. Visualize the resulting solution.
+7. Visualize the generated solution.
+8. Compare algorithm performance.
 
 ---
 
 ## Project Structure
 
 ```text
-.
+PUBG-Safe-Zone-Pathfinding-AI
+│
 ├── images
+│   ├── banner.png
+│   ├── weighted_grid.png
+│   ├── final_path.png
+│   └── comparison.png
+│
 ├── PUBG_Safe_Zone_Pathfinding_Informed_Search.ipynb
+├── requirements.txt
 ├── README.md
-└── requirements.txt
+└── LICENSE
 ```
 
 ---
 
 ## Screenshots
 
-### Environment
+### Weighted Environment
 
 <p align="center">
-<img src="images/map.png" width="700">
+  <img src="images/weighted_grid.png" width="750">
 </p>
 
-### Final Path
+The weighted grid illustrates the PUBG-inspired environment, including obstacles, high-cost regions, and the target safe zone.
+
+---
+
+### Optimal Path Generated by A*
 
 <p align="center">
-<img src="images/result.png" width="700">
+  <img src="images/final_path.png" width="750">
 </p>
 
-### Algorithm Comparison
+The generated path represents the optimal route from the player's starting position to the safe zone while minimizing traversal cost.
+
+---
+
+### Algorithm Performance Comparison
 
 <p align="center">
-<img src="images/comparison.png" width="700">
+  <img src="images/comparison.png" width="750">
 </p>
+
+Performance comparison between the implemented informed search algorithms based on solution quality, explored nodes, and execution efficiency.
 
 ---
 
@@ -124,9 +146,10 @@ Both heuristics estimate the remaining distance to the goal while preserving adm
 - Python
 - Jupyter Notebook
 - NumPy
-- Pandas
 - Matplotlib
 - Heapq
+- Priority Queue
+- Artificial Intelligence Search Algorithms
 
 ---
 
@@ -135,10 +158,16 @@ Both heuristics estimate the remaining distance to the goal while preserving adm
 Clone the repository.
 
 ```bash
-git clone https://github.com/USERNAME/PUBG-Safe-Zone-Pathfinding-AI.git
+git clone https://github.com/Maria-Ashraf-Haleem/PUBG-Safe-Zone-Pathfinding-AI.git
 ```
 
-Install the required packages.
+Navigate to the project directory.
+
+```bash
+cd PUBG-Safe-Zone-Pathfinding-AI
+```
+
+Install the required dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -150,45 +179,55 @@ Launch Jupyter Notebook.
 jupyter notebook
 ```
 
-Open
+Open:
 
 ```
 PUBG_Safe_Zone_Pathfinding_Informed_Search.ipynb
 ```
 
-Run all notebook cells.
+Run all notebook cells to reproduce the experiments.
 
 ---
 
 ## Applications
 
-This project demonstrates practical applications of informed search algorithms in
+The concepts implemented in this project can be extended to various AI domains, including:
 
 - Autonomous Navigation
-- Robotics
 - Intelligent Game Agents
+- Mobile Robotics
 - Route Planning
+- Geographic Information Systems (GIS)
+- Decision Support Systems
 - Artificial Intelligence Education
 
 ---
 
 ## Future Improvements
 
-- Dynamic obstacles
-- Real-time safe zone updates
-- Diagonal movement
-- Additional search algorithms
-- Larger environments
-- Interactive visualization
+- Dynamic obstacles.
+- Real-time safe zone updates.
+- Diagonal movement support.
+- Additional informed and uninformed search algorithms.
+- Interactive graphical user interface.
+- Larger and randomly generated environments.
+- Performance benchmarking on large-scale maps.
 
 ---
 
 ## License
 
-This project is intended for educational and research purposes.
+This project was developed for educational and research purposes.
 
 ---
 
 ## Author
 
 **Maria Ashraf Haleem**
+
+Software Engineering Student
+
+Faculty of Computers and Artificial Intelligence
+
+Interested in Artificial Intelligence, Machine Learning, Intelligent Systems, and Software Engineering.
+````
